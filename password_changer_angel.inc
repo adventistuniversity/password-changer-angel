@@ -103,8 +103,7 @@ abstract class angelAPIIntegration {
     //Set private data
     $this->username = (isset($api_credentials['api_username'])) ? $api_credentials['api_username'] : '' ;
     $this->userpwd = (isset($api_credentials['api_password']))? $api_credentials['api_password']:'';
-    $this->url = $api_url;
-     
+    $this->url = $api_url;    
   }
     
 }
@@ -132,11 +131,11 @@ class angelAPIUserManagement extends angelAPIIntegration {
   * 
   */   
    public function executeAction($action, $action_paramenters) {
-    
+        
       try {
         //Check parameters
         $paramenters = 'APIACTION=' . $action . '&APIUSER=' . $this->username . '&APIPWD=' . $this->userpwd;
-    
+        
         //Add value to the action parameters
         foreach ($action_paramenters AS $property => $value) {
           //Add values parameters
@@ -155,7 +154,7 @@ class angelAPIUserManagement extends angelAPIIntegration {
                   );
          //Set action results
          $this->action_result = password_changer_api_simple_curl_call($this->url, $options);
-     
+         
          //Make cURL action using helper function from API and set it to action
          return $this->action_result;
      }
