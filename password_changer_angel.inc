@@ -94,7 +94,7 @@ abstract class angelAPIIntegration {
     if (is_null($api_url)) {
             
       //Log error
-      watchdog('password_changer_angel', 'Angel API URL not set.', WATCHDOG_ERROR);
+      watchdog('[password_changer_angel_inc][__construct]', 'Angel API URL not set.', WATCHDOG_ERROR);
       //Throw exception
        throw new passwordChangerAngelExeption('Angel API URL not set.');
         
@@ -160,7 +160,7 @@ class angelAPIUserManagement extends angelAPIIntegration {
      }
      catch (passwordChangerApiExeption $e) {
       
-       watchdog('password_changer_angel', $e->getMessage());   
+       watchdog('[password_changer_angel_inc][executeAction]', $e->getMessage(), WATCHDOG_ERROR);   
       
        throw new passwordChangerAngelExeption($e->getMessage());
       
